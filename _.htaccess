@@ -1,0 +1,53 @@
+# =====================================================================
+# Las Pleyades: configuración Apache
+# =====================================================================
+
+# Página de inicio
+DirectoryIndex index.php
+
+# No listar el contenido de las carpetas
+Options -Indexes
+
+# ---------- Forzar HTTPS ----------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Bloquear acceso directo a código interno y archivos ocultos
+    RewriteRule ^(includes|templates)(/|$) - [F,L]
+    RewriteRule (^|/)\. - [F,L]
+    RewriteRule \.(md|log|ini|sh|sql|bak|dist)$ - [F,L]
+
+    # Redirigir el antiguo index.html a la nueva página
+    RewriteRule ^index\.html$ / [L,R=301]
+</IfModule>
+
+# ---------- Ocultar firma del servidor ----------
+ServerSignature Off
+
+# ---------- Compresión ----------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
+
+# ---------- Caché del navegador ----------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    # CSS y JS llevan ?v=<fecha> en la URL, así que pueden cachearse por mucho tiempo
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ---------- Cabeceras para archivos estáticos ----------
+# (las de la página PHP se envían desde includes/helpers.php)
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always unset X-Powered-By
+</IfModule>
