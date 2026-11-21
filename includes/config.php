@@ -43,14 +43,20 @@ return [
 
     // Anuncios de Airbnb que se incrustan con el widget oficial.
     'airbnb_listings' => [
-    [
-        'id'    => '633184179397126110',
-        'label' => 'Cabaña 1 · El Quisco · 2 dormitorios · 3 camas · 1 baño',
+        [
+            'id'    => '633184179397126110',
+            'label' => 'CabaÃ±a 1 Â· El Quisco Â· 2 dormitorios Â· 3 camas Â· 1 baÃ±o',
+        ],
+        [
+            'id'    => '792266268813760127',
+            'label' => 'CabaÃ±a 2 Â· El Quisco Â· 2 dormitorios Â· 3 camas Â· 1 baÃ±o',
+        ],
     ],
-    [
-        'id'    => '792266268813760127',
-        'label' => 'Cabaña 2 · El Quisco · 2 dormitorios · 3 camas · 1 baño',
-    ],
+
+    // Formulario de cotizaciÃ³n (se envÃ­a como mensaje de WhatsApp).
+    'quote' => [
+        'cabins'     => ['CabaÃ±a 1', 'CabaÃ±a 2'],
+        'max_guests' => 5,
     ],
 
     // Nombre de Ã­cono (ver includes/icons.php) => texto.

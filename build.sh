@@ -1,5 +1,5 @@
 #!/bin/bash
-# Genera la versión estática del sitio en la carpeta docs/ para GitHub Pages.
+# Genera la versiÃ³n estÃ¡tica del sitio en la carpeta docs/ para GitHub Pages.
 set -e
 cd "$(dirname "$0")"
 

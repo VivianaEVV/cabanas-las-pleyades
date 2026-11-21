@@ -1,6 +1,6 @@
 /* ==========================================================================
    Las Pleyades: estilos
-   Orden: tokens → base → utilidades → layout → componentes → responsive
+   Orden: tokens ? base ? utilidades ? layout ? componentes ? responsive
    ========================================================================== */
 
 /* ---------- Tokens ---------- */
@@ -14,7 +14,7 @@
     --ink: #1d2733;
     --ink-soft: #4a5866;
     --line: #d5dfe7;
-    --whatsapp: #17864a; /* más oscuro que el verde oficial para contraste AA con texto blanco */
+    --whatsapp: #17864a; /* mÃ¡s oscuro que el verde oficial para contraste AA con texto blanco */
     --whatsapp-hover: #106b3a;
 
     --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -246,7 +246,7 @@ address {
     font-weight: 500;
 }
 
-/* En escritorio el número/correo reemplaza a la etiqueta corta */
+/* En escritorio el nÃºmero/correo reemplaza a la etiqueta corta */
 .btn > span {
     font-size: 0;
 }
@@ -314,7 +314,7 @@ address {
     margin-top: 0.05em;
 }
 
-/* ---------- Galería + Instagram ---------- */
+/* ---------- GalerÃ­a + Instagram ---------- */
 .media-grid {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -609,22 +609,14 @@ address {
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
+/* ---------- Nota de cabaÃ±as en espejo ---------- */
 .features__note {
     margin: -0.5rem 0 var(--space-2);
     color: var(--ink-soft);
     font-size: 0.95rem;
 }
-/* Galer�a ocupa todo el alto y el bot�n queda abajo */
+
+/* ---------- GalerÃ­a: mismo alto que Instagram, botÃ³n abajo ---------- */
 .gallery {
     display: flex;
     flex-direction: column;
@@ -647,13 +639,216 @@ address {
     color: var(--ink-soft);
 }
 
-.gallery__cta .btn {
+/* ---------- CotizaciÃ³n ---------- */
+.quote {
+    max-width: 720px;
+    margin-inline: auto;
+}
+
+.quote__intro {
+    margin: -0.5rem 0 var(--space-3);
+    text-align: center;
+    color: var(--ink-soft);
+}
+
+.quote__form {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.field {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.field label,
+.field legend {
+    padding: 0;
+    font-weight: 600;
+    color: var(--navy-900);
+}
+
+.field legend {
+    margin-bottom: 0.4rem;
+}
+
+.field__hint {
+    font-weight: 400;
+    color: var(--ink-soft);
+}
+
+.field input[type='text'],
+.field input[type='date'],
+.field textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 6rem;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: var(--sea-600);
+    outline: none;
+}
+
+.field [aria-invalid='true'] {
+    border-color: #b3261e;
+}
+
+.field__error {
+    margin: -0.25rem 0 0;
+    color: #b3261e;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+}
+
+.quote__nights {
+    margin: -1rem 0 0;
+    color: var(--sea-600);
+    font-weight: 600;
+    min-height: 1.6em;
+}
+
+/* Opciones tipo botÃ³n (radio) */
+.choice-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.choice {
+    position: relative;
+    cursor: pointer;
+}
+
+.choice input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.choice span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    color: var(--navy-900);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.choice--number span {
+    width: 2.9rem;
+    padding: 0;
+}
+
+.choice:hover span {
+    border-color: var(--navy-700);
+}
+
+.choice input:checked + span {
+    background: var(--navy-900);
+    border-color: var(--navy-900);
+    color: #fff;
+}
+
+.choice input:focus-visible + span {
+    outline: 3px solid var(--sea-600);
+    outline-offset: 2px;
+}
+
+.quote__submit {
+    justify-self: start;
+    padding: 0.9rem 1.6rem;
+    border: 0;
     font-size: 1rem;
+    cursor: pointer;
+}
+
+.quote__privacy,
+.quote__noscript {
+    margin: -0.75rem 0 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
 }
 
 @media (max-width: 768px) {
     .gallery__cta {
         justify-content: center;
         text-align: center;
+    }
+
+    .quote__submit {
+        justify-self: stretch;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+/* Botón "Cotizar" arriba y destino del enlace */
+.booking__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+    margin: -0.5rem 0 var(--space-3);
+    color: var(--ink-soft);
+    font-weight: 500;
+}
+
+.btn--primary {
+    background: var(--sea-600);
+}
+
+.btn--primary:hover {
+    background: #1f5a8a;
+}
+
+/* Que la cabecera fija no tape el título al bajar al formulario */
+#cotizar {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+@media (max-width: 520px) {
+    #cotizar {
+        scroll-margin-top: 1rem;
     }
 }

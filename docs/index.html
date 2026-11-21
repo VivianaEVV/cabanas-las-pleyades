@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="assets/css/styles.css?v=1795212157">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1795231453">
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Cabañas Las Pleyades","description":"Cabañas para 4 o 5 personas en El Quisco, Región de Valparaíso. Cocina equipada, quincho privado y estacionamiento. Reserva directo en Airbnb.","url":"https://cabanaslaspleyades.cl","image":"https://cabanaslaspleyades.cl/img/exterior/00_01.jpeg","telephone":"+56983215511","email":"contacto@cabanaslaspleyades.cl","address":{"@type":"PostalAddress","streetAddress":"Pje. Pléyades 840","postalCode":"2701765","addressLocality":"El Quisco","addressRegion":"Valparaíso","addressCountry":"CL"},"geo":{"@type":"GeoCoordinates","latitude":-33.16153937354966,"longitude":-71.71262392433393},"sameAs":["https://www.instagram.com/cabanaslaspleyades/"]}</script>
     <script src="assets/js/main.js?v=1795212662" defer></script>
@@ -58,6 +58,10 @@
             <div class="container">
                 <div class="panel">
                     <h1 id="reservas-titulo" class="section__title">Reserva directo en Airbnb</h1>
+                    <p class="booking__cta">
+                        ¿Prefieres consultar directo con nosotros?
+                        <a class="btn btn--primary" href="#cotizar"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Cotizar mi estadía</a>
+                    </p>
 
                     <div class="booking-grid">
                                                     <div class="booking-card">
@@ -67,7 +71,7 @@
                                      data-view="home"
                                      data-hide-price="true">
                                     <a href="https://www.airbnb.cl/rooms/633184179397126110" target="_blank" rel="noopener noreferrer nofollow">Ver en Airbnb</a>
-                                    <a href="https://www.airbnb.cl/rooms/633184179397126110" target="_blank" rel="noopener noreferrer nofollow">Caba�a 1 � El Quisco � 2 dormitorios � 3 camas � 1 ba�o</a>
+                                    <a href="https://www.airbnb.cl/rooms/633184179397126110" target="_blank" rel="noopener noreferrer nofollow">Cabaña 1 · El Quisco · 2 dormitorios · 3 camas · 1 baño</a>
                                 </div>
                             </div>
                                                     <div class="booking-card">
@@ -77,12 +81,12 @@
                                      data-view="home"
                                      data-hide-price="true">
                                     <a href="https://www.airbnb.cl/rooms/792266268813760127" target="_blank" rel="noopener noreferrer nofollow">Ver en Airbnb</a>
-                                    <a href="https://www.airbnb.cl/rooms/792266268813760127" target="_blank" rel="noopener noreferrer nofollow">Caba�a 2 � El Quisco � 2 dormitorios � 3 camas � 1 ba�o</a>
+                                    <a href="https://www.airbnb.cl/rooms/792266268813760127" target="_blank" rel="noopener noreferrer nofollow">Cabaña 2 · El Quisco · 2 dormitorios · 3 camas · 1 baño</a>
                                 </div>
                             </div>
                         
                         <article class="features">
-                            <h2 class="features__title">Dos caba�as iguales, en espejo</h2>
+                            <h2 class="features__title">Dos cabañas iguales, en espejo</h2>
                             <p class="features__note">Cada una tiene:</p>
                             <ul class="features__list">
                                                                     <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span>2 dormitorios y 1 baño</span></li>
@@ -298,14 +302,12 @@
                                          loading="lazy"                                         decoding="async">
                                 </button>
                             </li>
-                                                                </ul>
+                                            </ul>
 
                     <div class="gallery__cta">
-                        <p>�Te gustaron las caba�as? Consulta disponibilidad directo con nosotros.</p>
-                        <a class="btn btn--whatsapp"
-                           href="https://wa.me/56983215511?text=Hola%2C%20quisiera%20consultar%20disponibilidad%20en%20Caba%C3%B1as%20Las%20Pleyades."
-                           target="_blank" rel="noopener noreferrer">
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Escribir por WhatsApp
+                        <p>¿Te gustaron las cabañas? Consulta disponibilidad directo con nosotros.</p>
+                        <a class="btn btn--whatsapp" href="#cotizar">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Cotizar mi estadía
                         </a>
                     </div>
                 </div>
@@ -339,6 +341,102 @@
                                     </div>
             </div>
         </section>
+        <!-- Cotización -->
+        <section class="section" id="cotizar" aria-labelledby="cotizar-titulo">
+            <div class="container">
+                <div class="panel quote">
+                    <h2 id="cotizar-titulo" class="section__title">Cotiza tu estadía</h2>
+                    <p class="quote__intro">Completa los datos y se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+
+                    <form class="quote__form" data-quote-form
+                          data-whatsapp="56983215511" novalidate>
+
+                        <div class="field">
+                            <label for="q-nombre">Tu nombre</label>
+                            <input id="q-nombre" name="nombre" type="text" required
+                                   maxlength="60" autocomplete="name">
+                            <p class="field__error" id="q-nombre-error" hidden>Escribe tu nombre.</p>
+                        </div>
+
+                        <fieldset class="field">
+                            <legend>Cabaña</legend>
+                            <div class="choice-group">
+                                                                    <label class="choice">
+                                        <input type="radio" name="cabana" value="Cabaña 1" checked>
+                                        <span>Cabaña 1</span>
+                                    </label>
+                                                                    <label class="choice">
+                                        <input type="radio" name="cabana" value="Cabaña 2" >
+                                        <span>Cabaña 2</span>
+                                    </label>
+                                                                <label class="choice">
+                                    <input type="radio" name="cabana" value="Cualquiera disponible">
+                                    <span>Cualquiera</span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="q-llegada">Llegada</label>
+                                <input id="q-llegada" name="llegada" type="date" required>
+                            </div>
+                            <div class="field">
+                                <label for="q-salida">Salida</label>
+                                <input id="q-salida" name="salida" type="date" required>
+                            </div>
+                        </div>
+                        <p class="field__error" id="q-fechas-error" hidden></p>
+                        <p class="quote__nights" data-quote-nights aria-live="polite"></p>
+
+                        <fieldset class="field">
+                            <legend>Personas <span class="field__hint">(máximo 5)</span></legend>
+                            <div class="choice-group">
+                                                                    <label class="choice choice--number">
+                                        <input type="radio" name="personas" value="1" >
+                                        <span>1</span>
+                                    </label>
+                                                                    <label class="choice choice--number">
+                                        <input type="radio" name="personas" value="2" checked>
+                                        <span>2</span>
+                                    </label>
+                                                                    <label class="choice choice--number">
+                                        <input type="radio" name="personas" value="3" >
+                                        <span>3</span>
+                                    </label>
+                                                                    <label class="choice choice--number">
+                                        <input type="radio" name="personas" value="4" >
+                                        <span>4</span>
+                                    </label>
+                                                                    <label class="choice choice--number">
+                                        <input type="radio" name="personas" value="5" >
+                                        <span>5</span>
+                                    </label>
+                                                            </div>
+                        </fieldset>
+
+                        <div class="field">
+                            <label for="q-comentario">Comentario <span class="field__hint">(opcional)</span></label>
+                            <textarea id="q-comentario" name="comentario" rows="4" maxlength="500"
+                                      placeholder="Ej.: llegamos tarde, viajamos con niños, consultas por mascotas?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--whatsapp quote__submit">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Enviar cotización por WhatsApp
+                        </button>
+                        <p class="quote__privacy">Tus datos no se guardan en esta página: solo se usan para armar el mensaje.</p>
+                    </form>
+
+                    <noscript>
+                        <p class="quote__noscript">
+                            Para cotizar, escríbenos a
+                            <a href="https://wa.me/56983215511">WhatsApp</a>
+                            o a <a href="mailto:contacto@cabanaslaspleyades.cl">contacto@cabanaslaspleyades.cl</a>.
+                        </p>
+                    </noscript>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Visor de fotos (usa <dialog>: accesible por teclado y lector de pantalla) -->
@@ -354,6 +452,8 @@
         <button type="button" class="lightbox__btn lightbox__btn--next" data-lightbox-next aria-label="Foto siguiente"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
         <button type="button" class="lightbox__btn lightbox__btn--close" data-lightbox-close aria-label="Cerrar visor"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
     </dialog>
+
+    <script src="assets/js/cotizacion.js?v=1795231120" defer></script>
 
     <!-- SDK de Airbnb: se carga una sola vez para todos los widgets. -->
     <script src="https://www.airbnb.cl/embeddable/airbnb_jssdk" async></script>
