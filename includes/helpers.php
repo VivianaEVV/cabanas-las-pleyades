@@ -152,3 +152,21 @@ function structured_data(array $config): string
         JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
     );
 }
+
+/**
+ * Estrellas de calificación (0 a 5) con relleno parcial, p. ej. 4,9.
+ * El texto accesible lo lee el lector de pantalla; las estrellas son decorativas.
+ */
+function star_rating(float $rating, string $class = 'stars'): string
+{
+    $rating  = max(0.0, min(5.0, $rating));
+    $percent = round($rating / 5 * 100, 1);
+    $star    = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>';
+    $five    = str_repeat($star, 5);
+
+    return '<span class="' . e($class) . '" role="img" aria-label="'
+        . e(number_format($rating, 1, ',', '') . ' de 5 estrellas') . '">'
+        . '<span class="stars__base">' . $five . '</span>'
+        . '<span class="stars__fill" style="width:' . e((string) $percent) . '%">' . $five . '</span>'
+        . '</span>';
+}

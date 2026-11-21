@@ -9,6 +9,11 @@ $contact    = $config['contact'];
 $address    = $config['address'];
 $categories = $config['gallery_categories'];
 $quote      = $config['quote'];
+$reviews    = $config['reviews'];
+
+$googleHosts    = ['share.google', 'g.page', 'maps.app.goo.gl', 'www.google.com', 'search.google.com', 'maps.google.com'];
+$reviewsUrl     = safe_external_url($reviews['url'], $googleHosts);
+$writeReviewUrl = safe_external_url($reviews['write_url'], $googleHosts);
 
 // Solo se muestran fotos cuya categoría exista en la configuración.
 $gallery = array_values(array_filter(
@@ -137,7 +142,7 @@ require __DIR__ . '/templates/header.php';
         </section>
         <!-- Cotización -->
         <section class="section" id="cotizar" aria-labelledby="cotizar-titulo">
-            <div class="container">
+            <div class="container contact-grid">
                 <div class="panel quote">
                     <h2 id="cotizar-titulo" class="section__title">Cotiza tu estadía</h2>
                     <p class="quote__intro">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
@@ -214,6 +219,52 @@ require __DIR__ . '/templates/header.php';
                         </p>
                     </noscript>
                 </div>
+
+                <!-- Opiniones de Google -->
+                <aside class="panel reviews" aria-labelledby="opiniones-titulo">
+                    <h2 id="opiniones-titulo" class="section__title">Opiniones en Google</h2>
+
+                    <div class="reviews__summary">
+                        <span class="reviews__score"><?= e(number_format((float) $reviews['rating'], 1, ',', '')) ?></span>
+                        <div>
+                            <?= star_rating((float) $reviews['rating']) ?>
+                            <p class="reviews__count"><?= e($reviews['count']) ?> opiniones</p>
+                        </div>
+                    </div>
+
+                    <ul class="reviews__list">
+                        <?php foreach ($reviews['items'] as $review): ?>
+                            <li class="review">
+                                <span class="review__avatar" aria-hidden="true"><?= e(function_exists('mb_substr') ? mb_substr($review['name'], 0, 1) : substr($review['name'], 0, 1)) ?></span>
+                                <div class="review__body">
+                                    <p class="review__author">
+                                        <?= e($review['name']) ?>
+                                        <?php if ($review['badge'] !== ''): ?>
+                                            <span class="review__badge"><?= e($review['badge']) ?></span>
+                                        <?php endif; ?>
+                                    </p>
+                                    <?= star_rating(5, 'stars stars--small') ?>
+                                    <blockquote class="review__text"><p><?= e($review['text']) ?></p></blockquote>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+
+                    <?php if (!empty($reviews['also'])): ?>
+                        <p class="reviews__also">
+                            También nos dieron 5 estrellas: <?= e(implode(', ', $reviews['also'])) ?> y más.
+                        </p>
+                    <?php endif; ?>
+
+                    <div class="reviews__actions">
+                        <?php if ($reviewsUrl !== ''): ?>
+                            <a class="btn btn--outline" href="<?= e($reviewsUrl) ?>" target="_blank" rel="noopener noreferrer">Ver todas en Google</a>
+                        <?php endif; ?>
+                        <?php if ($writeReviewUrl !== ''): ?>
+                            <a class="btn btn--primary" href="<?= e($writeReviewUrl) ?>" target="_blank" rel="noopener noreferrer">Dejar una opinión</a>
+                        <?php endif; ?>
+                    </div>
+                </aside>
             </div>
         </section>
     </main>

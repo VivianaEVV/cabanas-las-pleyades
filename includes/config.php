@@ -62,6 +62,31 @@ return [
         'check_out'  => '12:00',
     ],
 
+    // Opiniones de Google (se actualizan a mano copiando desde Google).
+    'reviews' => [
+        'rating'    => 4.9,
+        'count'     => 16,
+        // Enlace a la ficha en Google ("Ver todas").
+        'url'       => 'https://share.google/HyD25ODlWxmhCmJli',
+        // Enlace para dejar una opinión: en Google, botón "Consigue más opiniones".
+        // Si queda vacío, el botón no se muestra.
+        'write_url' => '',
+        'items' => [
+            [
+                'name'  => 'Ariel C.',
+                'text'  => 'Excelente lugar para descansar y muy cercano a la playa. Lo mejor de todo... es pet-friendly. Las cabañas son bonitas, cómodas, y un buen espacio.',
+                'badge' => '',
+            ],
+            [
+                'name'  => 'Rodolfo Z.',
+                'text'  => 'Excelente, súper cerca de todo lo que se necesite y están súper equipadas.',
+                'badge' => 'Local Guide',
+            ],
+        ],
+        // Personas que calificaron con 5 estrellas sin dejar comentario.
+        'also' => ['Bruno V.', 'Valeria L.', 'Cristina M.', 'Martín D.'],
+    ],
+
     // Nombre de ícono (ver includes/icons.php) => texto.
     'features' => [
         ['icon' => 'bed',      'text' => '2 dormitorios y 1 baño'],
