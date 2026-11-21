@@ -136,21 +136,24 @@
         const n = nights();
         const comment = clean(String(data.get('comentario') || ''), 500);
 
+        // Emojis escritos como codigos para que no se danen: \u{2705} = check verde,
+        // \u{1F3E0} = casa, \u{1F4C5} = calendario.
         const lines = [
             'Hola, quisiera cotizar una estad\u00eda en Caba\u00f1as Las Pleyades:',
             '',
-            `*Nombre:* ${clean(String(data.get('nombre')), 60)}`,
-            `*Caba\u00f1a:* ${data.get('cabana')}`,
-            `*Llegada:* ${formatDate(arrival.value)}`,
-            `*Salida:* ${formatDate(departure.value)} (${n} ${n === 1 ? 'noche' : 'noches'})`,
-            `*Personas:* ${data.get('personas')}`,
+            `\u{2705} Nombre: ${clean(String(data.get('nombre')), 60)}`,
+            `\u{1F3E0} Caba\u00f1a: ${data.get('cabana')}`,
+            `\u{1F4C5} Llegada: ${formatDate(arrival.value)}`,
+            `\u{1F4C5} Salida: ${formatDate(departure.value)} (${n} ${n === 1 ? 'noche' : 'noches'})`,
+            `\u{2705} Personas: ${data.get('personas')}`,
         ];
 
         if (comment) {
-            lines.push('', `*Comentario:* ${comment}`);
+            lines.push('', `Comentario: ${comment}`);
         }
 
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
+        // Se usa api.whatsapp.com en vez de wa.me: wa.me a veces estropea los emojis al redirigir.
+        const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(lines.join('\n'))}`;
 
         // Si el navegador bloquea la ventana nueva, se abre en la misma pestana.
         // (con 'noopener' window.open siempre devuelve null, por eso se corta a mano).
