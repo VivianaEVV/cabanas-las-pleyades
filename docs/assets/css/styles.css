@@ -1,20 +1,25 @@
 /* ==========================================================================
    Las Pleyades: estilos
-   Orden: tokens ? base ? utilidades ? layout ? componentes ? responsive
+   (Archivo solo con caracteres simples para que no se dane al descargarlo)
+   Orden: tokens -> base -> utilidades -> layout -> componentes -> responsive
    ========================================================================== */
 
 /* ---------- Tokens ---------- */
 :root {
-    --navy-900: #1f3347;
-    --navy-700: #2d4a66;
-    --sea-600: #2a6fa8;
-    --sea-100: #e3eef6;
-    --mist: #eef3f6;
+    /* Paleta "costa central": Pacifico profundo, agua, espuma y arena */
+    --navy-900: #0f3d52;   /* Pacifico profundo */
+    --navy-700: #17607d;
+    --sea-600: #1b739a;    /* agua (contraste AA con texto blanco) */
+    --sea-100: #e0f0f4;    /* espuma */
+    --mist: #f1f7f7;
+    --sand: #f4ead7;       /* arena */
+    --sun: #f6c453;        /* sol de tarde */
+    --sun-hover: #f0b532;
     --surface: #ffffff;
-    --ink: #1d2733;
-    --ink-soft: #4a5866;
-    --line: #d5dfe7;
-    --whatsapp: #17864a; /* más oscuro que el verde oficial para contraste AA con texto blanco */
+    --ink: #17303d;
+    --ink-soft: #4a6170;
+    --line: #d3e2e8;
+    --whatsapp: #17864a;
     --whatsapp-hover: #106b3a;
 
     --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -22,7 +27,7 @@
     --radius-lg: 18px;
     --radius-md: 12px;
     --radius-pill: 999px;
-    --shadow: 0 10px 30px -12px rgb(31 51 71 / 0.25);
+    --shadow: 0 12px 32px -14px rgb(15 61 82 / 0.28);
 
     --space-1: 0.5rem;
     --space-2: 1rem;
@@ -246,7 +251,7 @@ address {
     font-weight: 500;
 }
 
-/* En escritorio el número/correo reemplaza a la etiqueta corta */
+/* En escritorio el numero/correo reemplaza a la etiqueta corta */
 .btn > span {
     font-size: 0;
 }
@@ -314,7 +319,7 @@ address {
     margin-top: 0.05em;
 }
 
-/* ---------- Galería + Instagram ---------- */
+/* ---------- Galeria + Instagram ---------- */
 .media-grid {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -609,14 +614,14 @@ address {
     }
 }
 
-/* ---------- Nota de cabañas en espejo ---------- */
+/* ---------- Nota de cabanas en espejo ---------- */
 .features__note {
     margin: -0.5rem 0 var(--space-2);
     color: var(--ink-soft);
     font-size: 0.95rem;
 }
 
-/* ---------- Galería: mismo alto que Instagram, botón abajo ---------- */
+/* ---------- Galeria: mismo alto que Instagram, boton abajo ---------- */
 .gallery {
     display: flex;
     flex-direction: column;
@@ -639,7 +644,7 @@ address {
     color: var(--ink-soft);
 }
 
-/* ---------- Cotización + opiniones lado a lado ---------- */
+/* ---------- Cotizacion + opiniones lado a lado ---------- */
 .contact-grid {
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -647,7 +652,7 @@ address {
     align-items: stretch;
 }
 
-/* ---------- Cotización (compacta) ---------- */
+/* ---------- Cotizacion (compacta) ---------- */
 .quote {
     min-width: 0;
 }
@@ -658,7 +663,7 @@ address {
     color: var(--ink-soft);
 }
 
-/* 4 columnas en escritorio: nombre ocupa 2, cabaña 1, personas 1 */
+/* 4 columnas en escritorio: nombre ocupa 2, cabana 1, personas 1 */
 .quote__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -824,7 +829,7 @@ address {
     }
 }
 
-/* ---------- Botón "Cotizar" arriba y destino del enlace ---------- */
+/* ---------- Boton "Cotizar" arriba y destino del enlace ---------- */
 .booking__cta {
     display: flex;
     flex-wrap: wrap;
@@ -844,7 +849,7 @@ address {
     background: #1f5a8a;
 }
 
-/* Que la cabecera fija no tape el título al saltar al formulario */
+/* Que la cabecera fija no tape el titulo al saltar al formulario */
 #cotizar {
     scroll-margin-top: calc(var(--header-h) + 1rem);
 }
@@ -1002,6 +1007,188 @@ address {
 @media (max-width: 992px) {
     .contact-grid {
         grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ---------- Portada playera ---------- */
+/* Texto a la izquierda y la foto (collage) completa a la derecha, sin recortes */
+.hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: min(62vh, 520px);
+    overflow: hidden;
+    color: #fff;
+    background:
+        radial-gradient(circle at 85% 20%, rgb(246 196 83 / 0.18), transparent 40%),
+        linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+}
+
+.hero__image {
+    position: absolute;
+    top: 50%;
+    right: max(var(--space-4), calc((100vw - var(--container)) / 2));
+    translate: 0 calc(-50% - 25px);
+    z-index: 1;
+    width: min(50%, 640px);
+    height: auto;
+    max-height: calc(100% - 110px);
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 45px -18px rgb(0 0 0 / 0.55);
+}
+
+/* Sin degradado sobre la foto: ya no hay texto encima */
+.hero::before {
+    content: none;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero__content > * {
+    max-width: min(46%, 560px);
+}
+
+.hero__content > .hero__title {
+    max-width: min(46%, 16ch);
+}
+
+.hero__content > .hero__actions {
+    max-width: none;
+}
+
+.hero__content {
+    padding-block: var(--space-4) calc(var(--space-4) + 60px);
+}
+
+.hero__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 var(--space-2);
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-pill);
+    background: var(--sun);
+    color: var(--navy-900);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.hero__title {
+    text-wrap: balance;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2rem, 4.6vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+.hero__text {
+    max-width: 44ch;
+    margin: var(--space-2) 0 var(--space-3);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    opacity: 0.95;
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn--sun {
+    background: var(--sun);
+    color: var(--navy-900);
+}
+
+.btn--sun:hover {
+    background: var(--sun-hover);
+}
+
+.btn--glass {
+    background: rgb(255 255 255 / 0.14);
+    border: 2px solid rgb(255 255 255 / 0.7);
+    color: #fff;
+}
+
+.btn--glass:hover {
+    background: rgb(255 255 255 / 0.26);
+}
+
+.hero :focus-visible {
+    outline-color: #fff;
+}
+
+/* Ola que une la portada con el resto de la pagina */
+.hero__wave {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 70px;
+    fill: var(--mist);
+}
+
+/* Toques de arena */
+.features {
+    background: var(--sand);
+}
+
+.quote__rules {
+    background: var(--sand);
+}
+
+.map__beach {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: fit-content;
+    margin: -1rem auto var(--space-3);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-pill);
+    background: var(--sun);
+    color: var(--navy-900);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    /* En celular: foto completa arriba y texto debajo */
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+    }
+
+    .hero__image {
+        position: static;
+        translate: none;
+        width: calc(100% - 2 * var(--space-2));
+        max-height: none;
+        margin: var(--space-2) auto 0;
+    }
+
+    .hero__content > *,
+    .hero__content > .hero__title {
+        max-width: none;
+    }
+
+    .hero__wave {
+        height: 40px;
+    }
+
+    .hero__content {
+        padding-bottom: calc(var(--space-4) + 40px);
+    }
+
+    .hero__actions .btn {
+        flex: 1 1 auto;
+        justify-content: center;
     }
 }
 
