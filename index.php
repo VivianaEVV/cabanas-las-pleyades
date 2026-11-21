@@ -5,7 +5,9 @@ declare(strict_types=1);
 /** @var array<string, mixed> $config */
 $config = require __DIR__ . '/includes/bootstrap.php';
 
+$site       = $config['site'];
 $contact    = $config['contact'];
+$beachMinutes = (int) $site['beach_minutes'];
 $address    = $config['address'];
 $categories = $config['gallery_categories'];
 $quote      = $config['quote'];
@@ -29,11 +31,29 @@ require __DIR__ . '/templates/header.php';
 ?>
     <main id="contenido">
 
+        <!-- Portada -->
+        <section class="hero" aria-labelledby="hero-titulo">
+            <img class="hero__image" src="<?= e($site['hero_image']) ?>" alt=""
+                 fetchpriority="high" decoding="async">
+            <div class="container hero__content">
+                <p class="hero__chip"><?= icon('walk') ?> <?= e($beachMinutes) ?> min caminando a la playa</p>
+                <h1 id="hero-titulo" class="hero__title">Despierta a pasos del mar en El Quisco</h1>
+                <p class="hero__text">Cabañas para 4 o 5 personas, con quincho, cocina equipada y estacionamiento.</p>
+                <div class="hero__actions">
+                    <a class="btn btn--sun" href="#cotizar"><?= icon('chat') ?> Cotizar mi estadía</a>
+                    <a class="btn btn--glass" href="#galeria">Ver fotos</a>
+                </div>
+            </div>
+            <svg class="hero__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path d="M0 50 C 180 90 360 10 540 40 S 900 90 1080 50 S 1320 10 1440 40 L1440 90 L0 90 Z"/>
+            </svg>
+        </section>
+
         <!-- Reservas -->
         <section class="section" aria-labelledby="reservas-titulo">
             <div class="container">
                 <div class="panel">
-                    <h1 id="reservas-titulo" class="section__title">Reserva directo en Airbnb</h1>
+                    <h2 id="reservas-titulo" class="section__title">Reserva directo en Airbnb</h2>
                     <p class="booking__cta">
                         ¿Prefieres consultar directo con nosotros?
                         <a class="btn btn--primary" href="#cotizar"><?= icon('chat') ?> Cotizar mi estadía</a>
@@ -72,7 +92,7 @@ require __DIR__ . '/templates/header.php';
         </section>
 
         <!-- Galería + Instagram -->
-        <section class="section" aria-labelledby="galeria-titulo">
+        <section class="section" id="galeria" aria-labelledby="galeria-titulo">
             <div class="container media-grid">
                 <div class="panel gallery" data-gallery>
                     <h2 id="galeria-titulo" class="section__title">Galería</h2>
@@ -128,6 +148,7 @@ require __DIR__ . '/templates/header.php';
                 <div class="panel">
                     <h2 id="ubicacion-titulo" class="section__title">Ubicación</h2>
                     <p class="map__address"><?= icon('pin') ?> <?= e($fullAddress) ?></p>
+                    <p class="map__beach"><?= icon('walk') ?> A <?= e($beachMinutes) ?> minutos caminando de la playa</p>
                     <?php if ($mapUrl !== ''): ?>
                         <div class="map__frame">
                             <iframe src="<?= e($mapUrl) ?>"

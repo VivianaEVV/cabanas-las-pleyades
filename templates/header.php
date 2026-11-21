@@ -5,7 +5,7 @@ declare(strict_types=1);
 /** @var array<string, mixed> $config */
 $site    = $config['site'];
 $contact = $config['contact'];
-$pageTitle = 'Cabañas ' . $site['name'] . ' en El Quisco | ' . $site['tagline'];
+$pageTitle = 'Cabañas ' . $site['name'] . ' en El Quisco | A ' . $site['beach_minutes'] . ' min de la playa';
 $ogImage   = rtrim($site['url'], '/') . '/' . $site['og_image'];
 ?>
 <!DOCTYPE html>

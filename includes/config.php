@@ -12,13 +12,17 @@ return [
     'site' => [
         'name'        => 'Las Pleyades',
         'tagline'     => 'Arriendo de Cabañas',
-        'description' => 'Cabañas para 4 o 5 personas en El Quisco, Región de Valparaíso. '
+        'description' => 'Cabañas para 4 o 5 personas en El Quisco, a 2 minutos caminando de la playa. '
                        . 'Cocina equipada, quincho privado y estacionamiento. Reserva directo en Airbnb.',
         'url'         => 'https://cabanaslaspleyades.cl',
         'locale'      => 'es_CL',
         'lang'        => 'es',
         'logo'        => 'img/Logo.png',
         'og_image'    => 'img/exterior/00_01.jpeg',
+        // Foto grande de la portada (cámbiala por la que más te guste).
+        'hero_image'  => 'img/playa/05_cabanas_portada.jpg',
+        // Minutos caminando a la playa (se usa en la portada, la lista y el mapa).
+        'beach_minutes' => 2,
     ],
 
     'contact' => [
@@ -89,6 +93,7 @@ return [
 
     // Nombre de ícono (ver includes/icons.php) => texto.
     'features' => [
+        ['icon' => 'waves',    'text' => 'A 2 minutos caminando de la playa'],
         ['icon' => 'bed',      'text' => '2 dormitorios y 1 baño'],
         ['icon' => 'utensils', 'text' => 'Cocina equipada'],
         ['icon' => 'bed',      'text' => 'Dormitorio principal con cama de 2 plazas'],
