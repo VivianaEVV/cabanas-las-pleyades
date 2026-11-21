@@ -1,7 +1,9 @@
 /**
- * Las Pleyades: formulario de cotización.
+ * Las Pleyades: formulario de cotizacion.
+ * Archivo solo en ASCII (los acentos van como \uXXXX) para que no se
+ * danen al descargarlo o copiarlo.
  * Valida los datos y abre WhatsApp con el mensaje armado.
- * No envía ni guarda nada en ningún servidor.
+ * No envia ni guarda nada en ningun servidor.
  */
 (() => {
     'use strict';
@@ -53,7 +55,7 @@
             next.setDate(next.getDate() + 1);
             departure.min = toISO(next);
 
-            // Si la salida quedó antes de la llegada, se limpia.
+            // Si la salida quedo antes de la llegada, se limpia.
             if (departure.value && departure.value <= arrival.value) {
                 departure.value = '';
             }
@@ -104,10 +106,10 @@
             showError(datesError, 'Elige la fecha de llegada y de salida.', [arrival, departure]);
             firstInvalid = firstInvalid || (!arrival.value ? arrival : departure);
         } else if (arrival.value < today) {
-            showError(datesError, 'La fecha de llegada ya pasó.', [arrival, departure]);
+            showError(datesError, 'La fecha de llegada ya pas\u00f3.', [arrival, departure]);
             firstInvalid = firstInvalid || arrival;
         } else if (nights() < 1) {
-            showError(datesError, 'La salida debe ser al menos un día después de la llegada.', [arrival, departure]);
+            showError(datesError, 'La salida debe ser al menos un d\u00eda despu\u00e9s de la llegada.', [arrival, departure]);
             firstInvalid = firstInvalid || departure;
         }
 
@@ -118,8 +120,8 @@
         return true;
     }
 
-    // ---------- Envío ----------
-    // Limpia el texto: sin saltos de línea extra ni caracteres de control.
+    // ---------- Envio ----------
+    // Limpia el texto: sin saltos de linea extra ni caracteres de control.
     const clean = (value, max) =>
         value.replace(/[\u0000-\u0009\u000B-\u001F\u007F]/g, '').replace(/\n{3,}/g, '\n\n').trim().slice(0, max);
 
@@ -135,22 +137,22 @@
         const comment = clean(String(data.get('comentario') || ''), 500);
 
         const lines = [
-            'Hola, quisiera cotizar una estadía en Cabañas Las Pleyades:',
+            'Hola, quisiera cotizar una estad\u00eda en Caba\u00f1as Las Pleyades:',
             '',
-            `? Nombre: ${clean(String(data.get('nombre')), 60)}`,
-            `? Cabaña: ${data.get('cabana')}`,
-            `? Llegada: ${formatDate(arrival.value)}`,
-            `? Salida: ${formatDate(departure.value)} (${n} ${n === 1 ? 'noche' : 'noches'})`,
-            `? Personas: ${data.get('personas')}`,
+            `*Nombre:* ${clean(String(data.get('nombre')), 60)}`,
+            `*Caba\u00f1a:* ${data.get('cabana')}`,
+            `*Llegada:* ${formatDate(arrival.value)}`,
+            `*Salida:* ${formatDate(departure.value)} (${n} ${n === 1 ? 'noche' : 'noches'})`,
+            `*Personas:* ${data.get('personas')}`,
         ];
 
         if (comment) {
-            lines.push('', `Comentario: ${comment}`);
+            lines.push('', `*Comentario:* ${comment}`);
         }
 
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
 
-        // Si el navegador bloquea la ventana nueva, se abre en la misma pestaña.
+        // Si el navegador bloquea la ventana nueva, se abre en la misma pestana.
         // (con 'noopener' window.open siempre devuelve null, por eso se corta a mano).
         const opened = window.open(url, '_blank');
         if (opened) {

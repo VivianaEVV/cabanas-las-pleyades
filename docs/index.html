@@ -20,10 +20,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="assets/css/styles.css?v=1795231453">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1795232193">
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Cabañas Las Pleyades","description":"Cabañas para 4 o 5 personas en El Quisco, Región de Valparaíso. Cocina equipada, quincho privado y estacionamiento. Reserva directo en Airbnb.","url":"https://cabanaslaspleyades.cl","image":"https://cabanaslaspleyades.cl/img/exterior/00_01.jpeg","telephone":"+56983215511","email":"contacto@cabanaslaspleyades.cl","address":{"@type":"PostalAddress","streetAddress":"Pje. Pléyades 840","postalCode":"2701765","addressLocality":"El Quisco","addressRegion":"Valparaíso","addressCountry":"CL"},"geo":{"@type":"GeoCoordinates","latitude":-33.16153937354966,"longitude":-71.71262392433393},"sameAs":["https://www.instagram.com/cabanaslaspleyades/"]}</script>
-    <script src="assets/js/main.js?v=1795212662" defer></script>
+    <script src="assets/js/main.js?v=1795232193" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -59,7 +59,7 @@
                 <div class="panel">
                     <h1 id="reservas-titulo" class="section__title">Reserva directo en Airbnb</h1>
                     <p class="booking__cta">
-                        ¿Prefieres consultar directo con nosotros?
+                        ¿O prefieres contizar directo con nosotros?
                         <a class="btn btn--primary" href="#cotizar"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Cotizar mi estadía</a>
                     </p>
 
@@ -346,85 +346,64 @@
             <div class="container">
                 <div class="panel quote">
                     <h2 id="cotizar-titulo" class="section__title">Cotiza tu estadía</h2>
-                    <p class="quote__intro">Completa los datos y se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+                    <p class="quote__intro">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
 
                     <form class="quote__form" data-quote-form
                           data-whatsapp="56983215511" novalidate>
 
-                        <div class="field">
-                            <label for="q-nombre">Tu nombre</label>
-                            <input id="q-nombre" name="nombre" type="text" required
-                                   maxlength="60" autocomplete="name">
-                            <p class="field__error" id="q-nombre-error" hidden>Escribe tu nombre.</p>
-                        </div>
-
-                        <fieldset class="field">
-                            <legend>Cabaña</legend>
-                            <div class="choice-group">
-                                                                    <label class="choice">
-                                        <input type="radio" name="cabana" value="Cabaña 1" checked>
-                                        <span>Cabaña 1</span>
-                                    </label>
-                                                                    <label class="choice">
-                                        <input type="radio" name="cabana" value="Cabaña 2" >
-                                        <span>Cabaña 2</span>
-                                    </label>
-                                                                <label class="choice">
-                                    <input type="radio" name="cabana" value="Cualquiera disponible">
-                                    <span>Cualquiera</span>
-                                </label>
+                        <div class="quote__grid">
+                            <div class="field field--wide">
+                                <label for="q-nombre">Tu nombre</label>
+                                <input id="q-nombre" name="nombre" type="text" required
+                                       maxlength="60" autocomplete="name">
+                                <p class="field__error" id="q-nombre-error" hidden>Escribe tu nombre.</p>
                             </div>
-                        </fieldset>
 
-                        <div class="field-row">
                             <div class="field">
+                                <label for="q-cabana">Cabaña</label>
+                                <select id="q-cabana" name="cabana">
+                                                                            <option value="Cabaña 1">Cabaña 1</option>
+                                                                            <option value="Cabaña 2">Cabaña 2</option>
+                                                                        <option value="Cualquiera disponible">Cualquiera</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label for="q-personas">Personas</label>
+                                <select id="q-personas" name="personas">
+                                                                            <option value="1" >1</option>
+                                                                            <option value="2" selected>2</option>
+                                                                            <option value="3" >3</option>
+                                                                            <option value="4" >4</option>
+                                                                            <option value="5" >5</option>
+                                                                    </select>
+                            </div>
+
+                            <div class="field field--half">
                                 <label for="q-llegada">Llegada</label>
                                 <input id="q-llegada" name="llegada" type="date" required>
                             </div>
-                            <div class="field">
-                                <label for="q-salida">Salida</label>
+
+                            <div class="field field--half">
+                                <label for="q-salida">Salida <span class="quote__nights" data-quote-nights aria-live="polite"></span></label>
                                 <input id="q-salida" name="salida" type="date" required>
                             </div>
-                        </div>
-                        <p class="field__error" id="q-fechas-error" hidden></p>
-                        <p class="quote__nights" data-quote-nights aria-live="polite"></p>
 
-                        <fieldset class="field">
-                            <legend>Personas <span class="field__hint">(máximo 5)</span></legend>
-                            <div class="choice-group">
-                                                                    <label class="choice choice--number">
-                                        <input type="radio" name="personas" value="1" >
-                                        <span>1</span>
-                                    </label>
-                                                                    <label class="choice choice--number">
-                                        <input type="radio" name="personas" value="2" checked>
-                                        <span>2</span>
-                                    </label>
-                                                                    <label class="choice choice--number">
-                                        <input type="radio" name="personas" value="3" >
-                                        <span>3</span>
-                                    </label>
-                                                                    <label class="choice choice--number">
-                                        <input type="radio" name="personas" value="4" >
-                                        <span>4</span>
-                                    </label>
-                                                                    <label class="choice choice--number">
-                                        <input type="radio" name="personas" value="5" >
-                                        <span>5</span>
-                                    </label>
-                                                            </div>
-                        </fieldset>
+                            <p class="field__error field--full" id="q-fechas-error" hidden></p>
 
-                        <div class="field">
-                            <label for="q-comentario">Comentario <span class="field__hint">(opcional)</span></label>
-                            <textarea id="q-comentario" name="comentario" rows="4" maxlength="500"
-                                      placeholder="Ej.: llegamos tarde, viajamos con niños, consultas por mascotas?"></textarea>
+                            <div class="field field--full">
+                                <label for="q-comentario">Comentario <span class="field__hint">(opcional)</span></label>
+                                <textarea id="q-comentario" name="comentario" rows="2" maxlength="500"
+                                          placeholder="Ej.: llegamos tarde, viajamos con niños, consultas por mascotas..."></textarea>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn--whatsapp quote__submit">
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Enviar cotización por WhatsApp
-                        </button>
-                        <p class="quote__privacy">Tus datos no se guardan en esta página: solo se usan para armar el mensaje.</p>
+                        <div class="quote__actions">
+                            <button type="submit" class="btn btn--whatsapp quote__submit">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Enviar por WhatsApp
+                            </button>
+                            <p class="quote__privacy">Tus datos no se guardan: solo se usan para armar el mensaje.</p>
+                        </div>
                     </form>
 
                     <noscript>
@@ -453,7 +432,7 @@
         <button type="button" class="lightbox__btn lightbox__btn--close" data-lightbox-close aria-label="Cerrar visor"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
     </dialog>
 
-    <script src="assets/js/cotizacion.js?v=1795231120" defer></script>
+    <script src="assets/js/cotizacion.js?v=1795232138" defer></script>
 
     <!-- SDK de Airbnb: se carga una sola vez para todos los widgets. -->
     <script src="https://www.airbnb.cl/embeddable/airbnb_jssdk" async></script>

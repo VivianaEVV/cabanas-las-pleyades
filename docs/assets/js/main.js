@@ -1,6 +1,6 @@
 /**
- * Las Pleyades: galería filtrable y visor de fotos.
- * Sin dependencias. No usa innerHTML con datos (evita inyección de HTML).
+ * Las Pleyades: galerí­a filtrable y visor de fotos.
+ * Sin dependencias. No usa innerHTML con datos (evita inyecciÃ³n de HTML).
  */
 (() => {
     'use strict';
@@ -20,7 +20,7 @@
     const caption = dialog.querySelector('[data-lightbox-caption]');
     const counter = dialog.querySelector('[data-lightbox-counter]');
 
-    /** Fotos visibles según el filtro activo (lo que recorre el visor). */
+    /** Fotos visibles segÃºn el filtro activo (lo que recorre el visor). */
     let visible = items;
     let current = 0;
 
@@ -50,7 +50,7 @@
             return;
         }
 
-        current = (index + total) % total; // navegación circular
+        current = (index + total) % total; // navegaciÃ³n circular
         const thumb = visible[current].querySelector('img');
 
         image.src = thumb.currentSrc || thumb.src;
@@ -58,7 +58,7 @@
         caption.textContent = thumb.alt;
         counter.textContent = `${current + 1} / ${total}`;
 
-        // Precarga la siguiente para que el cambio sea instantáneo.
+        // Precarga la siguiente para que el cambio sea instantÃ¡neo.
         const next = visible[(current + 1) % total].querySelector('img');
         if (next) {
             new Image().src = next.src;
@@ -72,8 +72,8 @@
         }
     }
 
-    // Se calcula el índice dentro de las fotos VISIBLES
-    // (el código anterior usaba el índice global y abría la foto equivocada al filtrar).
+    // Se calcula el Ã­ndice dentro de las fotos VISIBLES
+    // (el cÃ³digo anterior usaba el Ã­ndice global y abrÃ­a la foto equivocada al filtrar).
     gallery.addEventListener('click', (event) => {
         const thumb = event.target.closest('.gallery__thumb');
         if (!thumb) {

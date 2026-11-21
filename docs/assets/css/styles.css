@@ -14,7 +14,7 @@
     --ink: #1d2733;
     --ink-soft: #4a5866;
     --line: #d5dfe7;
-    --whatsapp: #17864a; /* mÃ¡s oscuro que el verde oficial para contraste AA con texto blanco */
+    --whatsapp: #17864a; /* más oscuro que el verde oficial para contraste AA con texto blanco */
     --whatsapp-hover: #106b3a;
 
     --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -246,7 +246,7 @@ address {
     font-weight: 500;
 }
 
-/* En escritorio el nÃºmero/correo reemplaza a la etiqueta corta */
+/* En escritorio el número/correo reemplaza a la etiqueta corta */
 .btn > span {
     font-size: 0;
 }
@@ -314,7 +314,7 @@ address {
     margin-top: 0.05em;
 }
 
-/* ---------- GalerÃ­a + Instagram ---------- */
+/* ---------- Galería + Instagram ---------- */
 .media-grid {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -609,14 +609,14 @@ address {
     }
 }
 
-/* ---------- Nota de cabaÃ±as en espejo ---------- */
+/* ---------- Nota de cabañas en espejo ---------- */
 .features__note {
     margin: -0.5rem 0 var(--space-2);
     color: var(--ink-soft);
     font-size: 0.95rem;
 }
 
-/* ---------- GalerÃ­a: mismo alto que Instagram, botÃ³n abajo ---------- */
+/* ---------- Galería: mismo alto que Instagram, botón abajo ---------- */
 .gallery {
     display: flex;
     flex-direction: column;
@@ -639,9 +639,9 @@ address {
     color: var(--ink-soft);
 }
 
-/* ---------- CotizaciÃ³n ---------- */
+/* ---------- Cotización (compacta) ---------- */
 .quote {
-    max-width: 720px;
+    max-width: 760px;
     margin-inline: auto;
 }
 
@@ -651,29 +651,36 @@ address {
     color: var(--ink-soft);
 }
 
-.quote__form {
+/* 4 columnas en escritorio: nombre ocupa 2, cabaña 1, personas 1 */
+.quote__grid {
     display: grid;
-    gap: var(--space-3);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-2);
 }
 
 .field {
     display: grid;
-    gap: 0.4rem;
+    gap: 0.3rem;
+    align-content: start;
     min-width: 0;
-    margin: 0;
-    padding: 0;
-    border: 0;
 }
 
-.field label,
-.field legend {
-    padding: 0;
+.field--wide {
+    grid-column: span 2;
+}
+
+.field--half {
+    grid-column: span 2;
+}
+
+.field--full {
+    grid-column: 1 / -1;
+}
+
+.field label {
     font-weight: 600;
+    font-size: 0.92rem;
     color: var(--navy-900);
-}
-
-.field legend {
-    margin-bottom: 0.4rem;
 }
 
 .field__hint {
@@ -681,11 +688,13 @@ address {
     color: var(--ink-soft);
 }
 
-.field input[type='text'],
-.field input[type='date'],
+.field input,
+.field select,
 .field textarea {
     width: 100%;
-    padding: 0.75rem 0.9rem;
+    min-width: 0;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.8rem;
     border: 2px solid var(--line);
     border-radius: var(--radius-md);
     background: var(--surface);
@@ -694,12 +703,17 @@ address {
     transition: border-color 0.2s ease;
 }
 
+.field select {
+    cursor: pointer;
+}
+
 .field textarea {
     resize: vertical;
-    min-height: 6rem;
+    min-height: 4.5rem;
 }
 
 .field input:focus,
+.field select:focus,
 .field textarea:focus {
     border-color: var(--sea-600);
     outline: none;
@@ -710,79 +724,32 @@ address {
 }
 
 .field__error {
-    margin: -0.25rem 0 0;
+    margin: 0;
     color: #b3261e;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 500;
 }
 
-.field-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2);
-}
-
 .quote__nights {
-    margin: -1rem 0 0;
-    color: var(--sea-600);
     font-weight: 600;
-    min-height: 1.6em;
+    color: var(--sea-600);
 }
 
-/* Opciones tipo botÃ³n (radio) */
-.choice-group {
+.quote__nights:not(:empty)::before {
+    content: '\00b7  ';
+    color: var(--ink-soft);
+}
+
+.quote__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
-}
-
-.choice {
-    position: relative;
-    cursor: pointer;
-}
-
-.choice input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.choice span {
-    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 2.75rem;
-    padding: 0.5rem 1.2rem;
-    border: 2px solid var(--line);
-    border-radius: var(--radius-pill);
-    font-weight: 600;
-    color: var(--navy-900);
-    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-
-.choice--number span {
-    width: 2.9rem;
-    padding: 0;
-}
-
-.choice:hover span {
-    border-color: var(--navy-700);
-}
-
-.choice input:checked + span {
-    background: var(--navy-900);
-    border-color: var(--navy-900);
-    color: #fff;
-}
-
-.choice input:focus-visible + span {
-    outline: 3px solid var(--sea-600);
-    outline-offset: 2px;
+    gap: 0.75rem 1.25rem;
+    margin-top: var(--space-3);
 }
 
 .quote__submit {
-    justify-self: start;
-    padding: 0.9rem 1.6rem;
+    padding: 0.8rem 1.5rem;
     border: 0;
     font-size: 1rem;
     cursor: pointer;
@@ -790,7 +757,7 @@ address {
 
 .quote__privacy,
 .quote__noscript {
-    margin: -0.75rem 0 0;
+    margin: 0;
     font-size: 0.85rem;
     color: var(--ink-soft);
 }
@@ -801,28 +768,31 @@ address {
         text-align: center;
     }
 
+    /* 2 columnas en celular */
+    .quote__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .field--wide {
+        grid-column: 1 / -1;
+    }
+
+    .field--half {
+        grid-column: span 1;
+    }
+
     .quote__submit {
-        justify-self: stretch;
+        width: 100%;
         justify-content: center;
     }
-}
 
-@media (max-width: 420px) {
-    .field-row {
-        grid-template-columns: 1fr;
+    .quote__privacy {
+        text-align: center;
+        width: 100%;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-/* Botón "Cotizar" arriba y destino del enlace */
+/* ---------- Botón "Cotizar" arriba y destino del enlace ---------- */
 .booking__cta {
     display: flex;
     flex-wrap: wrap;
@@ -842,7 +812,7 @@ address {
     background: #1f5a8a;
 }
 
-/* Que la cabecera fija no tape el título al bajar al formulario */
+/* Que la cabecera fija no tape el título al saltar al formulario */
 #cotizar {
     scroll-margin-top: calc(var(--header-h) + 1rem);
 }
@@ -850,5 +820,15 @@ address {
 @media (max-width: 520px) {
     #cotizar {
         scroll-margin-top: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
