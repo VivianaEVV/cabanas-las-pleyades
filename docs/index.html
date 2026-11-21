@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
-    <link rel="stylesheet" href="assets/css/styles.css?v=1795232193">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1795236487">
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Cabañas Las Pleyades","description":"Cabañas para 4 o 5 personas en El Quisco, Región de Valparaíso. Cocina equipada, quincho privado y estacionamiento. Reserva directo en Airbnb.","url":"https://cabanaslaspleyades.cl","image":"https://cabanaslaspleyades.cl/img/exterior/00_01.jpeg","telephone":"+56983215511","email":"contacto@cabanaslaspleyades.cl","address":{"@type":"PostalAddress","streetAddress":"Pje. Pléyades 840","postalCode":"2701765","addressLocality":"El Quisco","addressRegion":"Valparaíso","addressCountry":"CL"},"geo":{"@type":"GeoCoordinates","latitude":-33.16153937354966,"longitude":-71.71262392433393},"sameAs":["https://www.instagram.com/cabanaslaspleyades/"]}</script>
     <script src="assets/js/main.js?v=1795232193" defer></script>
@@ -59,7 +59,7 @@
                 <div class="panel">
                     <h1 id="reservas-titulo" class="section__title">Reserva directo en Airbnb</h1>
                     <p class="booking__cta">
-                        ¿O prefieres contizar directo con nosotros?
+                        ¿Prefieres consultar directo con nosotros?
                         <a class="btn btn--primary" href="#cotizar"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Cotizar mi estadía</a>
                     </p>
 
@@ -349,7 +349,8 @@
                     <p class="quote__intro">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
 
                     <form class="quote__form" data-quote-form
-                          data-whatsapp="56983215511" novalidate>
+                          data-whatsapp="56983215511"
+                          data-min-nights="2" novalidate>
 
                         <div class="quote__grid">
                             <div class="field field--wide">
@@ -390,6 +391,12 @@
                             </div>
 
                             <p class="field__error field--full" id="q-fechas-error" hidden></p>
+
+                            <ul class="quote__rules field--full">
+                                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Llegada desde las 15:00</li>
+                                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Salida hasta las 12:00</li>
+                                <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> Mínimo 2 noches</li>
+                            </ul>
 
                             <div class="field field--full">
                                 <label for="q-comentario">Comentario <span class="field__hint">(opcional)</span></label>
@@ -432,7 +439,7 @@
         <button type="button" class="lightbox__btn lightbox__btn--close" data-lightbox-close aria-label="Cerrar visor"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
     </dialog>
 
-    <script src="assets/js/cotizacion.js?v=1795232628" defer></script>
+    <script src="assets/js/cotizacion.js?v=1795236398" defer></script>
 
     <!-- SDK de Airbnb: se carga una sola vez para todos los widgets. -->
     <script src="https://www.airbnb.cl/embeddable/airbnb_jssdk" async></script>

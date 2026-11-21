@@ -57,6 +57,9 @@ return [
     'quote' => [
         'cabins'     => ['Cabaña 1', 'Cabaña 2'],
         'max_guests' => 5,
+        'min_nights' => 2,
+        'check_in'   => '15:00',
+        'check_out'  => '12:00',
     ],
 
     // Nombre de ícono (ver includes/icons.php) => texto.

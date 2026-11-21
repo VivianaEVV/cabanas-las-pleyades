@@ -14,6 +14,7 @@
     }
 
     const phone = (form.dataset.whatsapp || '').replace(/\D/g, '');
+    const minNights = Math.max(1, parseInt(form.dataset.minNights, 10) || 1);
     const nameInput = form.querySelector('#q-nombre');
     const nameError = form.querySelector('#q-nombre-error');
     const arrival = form.querySelector('#q-llegada');
@@ -47,15 +48,17 @@
     // No se puede elegir una fecha pasada.
     const today = toISO(new Date());
     arrival.min = today;
-    departure.min = today;
+    const firstDeparture = new Date();
+    firstDeparture.setDate(firstDeparture.getDate() + minNights);
+    departure.min = toISO(firstDeparture);
 
     function updateDates() {
         if (arrival.value) {
             const next = parseISO(arrival.value);
-            next.setDate(next.getDate() + 1);
+            next.setDate(next.getDate() + minNights);
             departure.min = toISO(next);
 
-            // Si la salida quedo antes de la llegada, se limpia.
+            // Si la salida quedo antes (o el mismo dia) de la llegada, se limpia.
             if (departure.value && departure.value <= arrival.value) {
                 departure.value = '';
             }
@@ -63,8 +66,11 @@
 
         const n = nights();
         nightsOut.textContent = n > 0 ? `${n} ${n === 1 ? 'noche' : 'noches'}` : '';
-        if (n > 0) {
+        if (n >= minNights) {
             showError(datesError, null, [arrival, departure]);
+        } else if (n > 0) {
+            // Aviso inmediato si no se cumple el minimo de noches.
+            showError(datesError, `La estad\u00eda m\u00ednima es de ${minNights} noches.`, [arrival, departure]);
         }
     }
 
@@ -108,8 +114,8 @@
         } else if (arrival.value < today) {
             showError(datesError, 'La fecha de llegada ya pas\u00f3.', [arrival, departure]);
             firstInvalid = firstInvalid || arrival;
-        } else if (nights() < 1) {
-            showError(datesError, 'La salida debe ser al menos un d\u00eda despu\u00e9s de la llegada.', [arrival, departure]);
+        } else if (nights() < minNights) {
+            showError(datesError, `La estad\u00eda m\u00ednima es de ${minNights} noches.`, [arrival, departure]);
             firstInvalid = firstInvalid || departure;
         }
 

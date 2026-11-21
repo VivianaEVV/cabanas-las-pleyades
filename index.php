@@ -30,7 +30,7 @@ require __DIR__ . '/templates/header.php';
                 <div class="panel">
                     <h1 id="reservas-titulo" class="section__title">Reserva directo en Airbnb</h1>
                     <p class="booking__cta">
-                        ¿O prefieres contizar directo con nosotros?
+                        ¿Prefieres consultar directo con nosotros?
                         <a class="btn btn--primary" href="#cotizar"><?= icon('chat') ?> Cotizar mi estadía</a>
                     </p>
 
@@ -143,7 +143,8 @@ require __DIR__ . '/templates/header.php';
                     <p class="quote__intro">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
 
                     <form class="quote__form" data-quote-form
-                          data-whatsapp="<?= e($contact['whatsapp_number']) ?>" novalidate>
+                          data-whatsapp="<?= e($contact['whatsapp_number']) ?>"
+                          data-min-nights="<?= e($quote['min_nights']) ?>" novalidate>
 
                         <div class="quote__grid">
                             <div class="field field--wide">
@@ -183,6 +184,12 @@ require __DIR__ . '/templates/header.php';
                             </div>
 
                             <p class="field__error field--full" id="q-fechas-error" hidden></p>
+
+                            <ul class="quote__rules field--full">
+                                <li><?= icon('clock') ?> Llegada desde las <?= e($quote['check_in']) ?></li>
+                                <li><?= icon('clock') ?> Salida hasta las <?= e($quote['check_out']) ?></li>
+                                <li><?= icon('moon') ?> Mínimo <?= e($quote['min_nights']) ?> noches</li>
+                            </ul>
 
                             <div class="field field--full">
                                 <label for="q-comentario">Comentario <span class="field__hint">(opcional)</span></label>
