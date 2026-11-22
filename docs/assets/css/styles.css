@@ -19,8 +19,8 @@
     --ink: #17303d;
     --ink-soft: #4a6170;
     --line: #d3e2e8;
-    --whatsapp: #17864a;
-    --whatsapp-hover: #106b3a;
+    --whatsapp: #25d366;
+    --whatsapp-hover: #1ebe5d;
 
     --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
@@ -180,14 +180,14 @@ address {
 .brand {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 1rem;
     color: inherit;
     text-decoration: none;
 }
 
 .brand__logo {
-    width: 72px;
-    height: 72px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
     border-radius: var(--radius-md);
 }
@@ -1200,4 +1200,43 @@ address {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+/* ---------- Airbnb: mismo alto que el recuadro arena, sin barra ---------- */
+.booking-grid {
+    align-items: stretch;
+}
+
+.booking-card {
+    min-height: 0;
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+    display: flex;
+}
+
+/* El widget de Airbnb reemplaza el contenido: se apunta a cualquier iframe dentro de la tarjeta */
+.booking-card > *,
+.booking-card iframe {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    min-height: 320px;
+    border: 0;
+    display: block;
+}
+/* Iframe un poco mas ancho que su caja: la barra de desplazamiento queda fuera de la vista */
+.airbnb-embed-frame iframe {
+    display: block;
+    width: calc(100% + 18px) !important;
+    margin-right: -18px;
+    border: 0;
+}
+/* Logo oficial de WhatsApp sobre un circulo blanco para que se distinga en el boton verde */
+.btn__logo {
+    width: 1.5em;
+    height: 1.5em;
+    padding: 2px;
+    border-radius: 50%;
+    background: #fff;
+    flex-shrink: 0;
 }

@@ -128,3 +128,22 @@
         }
     }, { passive: true });
 })();
+// Airbnb: quita la barra de desplazamiento del widget cuando termina de cargar.
+(() => {
+    'use strict';
+
+    const quitarBarra = () => {
+        document.querySelectorAll('.booking-card iframe').forEach((frame) => {
+            frame.setAttribute('scrolling', 'no');
+            frame.style.overflow = 'hidden';
+        });
+    };
+
+    // El widget se carga despues de la pagina: se revisa cada vez que aparece algo nuevo.
+    const observador = new MutationObserver(quitarBarra);
+    document.querySelectorAll('.booking-card').forEach((card) => {
+        observador.observe(card, { childList: true, subtree: true });
+    });
+
+    window.addEventListener('load', quitarBarra);
+})();

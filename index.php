@@ -55,7 +55,7 @@ require __DIR__ . '/templates/header.php';
                 <div class="panel">
                     <h2 id="reservas-titulo" class="section__title">Reserva directo en Airbnb</h2>
                     <p class="booking__cta">
-                        ¿Prefieres consultar directo con nosotros?
+                        <span><strong>Reserva directo y paga hasta 15% menos</strong> que en Airbnb.</span>
                         <a class="btn btn--primary" href="#cotizar"><?= icon('chat') ?> Cotizar mi estadía</a>
                     </p>
 
@@ -166,7 +166,8 @@ require __DIR__ . '/templates/header.php';
             <div class="container contact-grid">
                 <div class="panel quote">
                     <h2 id="cotizar-titulo" class="section__title">Cotiza tu estadía</h2>
-                    <p class="quote__intro">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+                    <p class="quote__intro">Cotizando directo pagas hasta 15% menos que en Airbnb.</p>
+                    <p class="quote__intro">Se abrir&aacute; WhatsApp con tu mensaje listo para enviar.</p>
 
                     <form class="quote__form" data-quote-form
                           data-whatsapp="<?= e($contact['whatsapp_number']) ?>"
@@ -226,7 +227,7 @@ require __DIR__ . '/templates/header.php';
 
                         <div class="quote__actions">
                             <button type="submit" class="btn btn--whatsapp quote__submit">
-                                <?= icon('chat') ?> Enviar por WhatsApp
+                                <img class="btn__logo" src="img/whatsapp.png" alt="" width="22" height="22"> Enviar por WhatsApp
                             </button>
                             <p class="quote__privacy">Tus datos no se guardan: solo se usan para armar el mensaje.</p>
                         </div>

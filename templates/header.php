@@ -41,7 +41,7 @@ $ogImage   = rtrim($site['url'], '/') . '/' . $site['og_image'];
     <header class="site-header">
         <div class="container site-header__inner">
             <a class="brand" href="./" aria-label="<?= e($site['name']) ?>, inicio">
-                <img class="brand__logo" src="<?= e($site['logo']) ?>" alt="" width="80" height="80">
+                <img class="brand__logo" src="<?= e($site['logo']) ?>" alt="" width="100" height="100">
                 <span class="brand__text">
                     <span class="brand__name"><?= e($site['name']) ?></span>
                     <span class="brand__tagline"><?= e($site['tagline']) ?></span>
@@ -52,7 +52,7 @@ $ogImage   = rtrim($site['url'], '/') . '/' . $site['og_image'];
                 <a class="btn btn--whatsapp"
                    href="<?= e(whatsapp_url($contact['whatsapp_number'], $contact['whatsapp_message'])) ?>"
                    target="_blank" rel="noopener noreferrer">
-                    <?= icon('chat') ?>
+                    <img class="btn__logo" src="img/whatsapp.png" alt="" width="22" height="22">
                     <span>WhatsApp <span class="btn__detail"><?= e($contact['whatsapp_display']) ?></span></span>
                 </a>
                 <a class="btn btn--email" href="mailto:<?= e($contact['email']) ?>"
