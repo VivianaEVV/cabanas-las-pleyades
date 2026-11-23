@@ -31,24 +31,102 @@ require __DIR__ . '/templates/header.php';
 ?>
     <main id="contenido">
 
-        <!-- Portada -->
-        <section class="hero" aria-labelledby="hero-titulo">
-            <img class="hero__image" src="<?= e($site['hero_image']) ?>" alt=""
-                 fetchpriority="high" decoding="async">
-            <div class="container hero__content">
-                <p class="hero__chip"><?= icon('walk') ?> <?= e($beachMinutes) ?> min caminando a la playa</p>
-                <h1 id="hero-titulo" class="hero__title">Despierta a pasos del mar en El Quisco</h1>
-                <p class="hero__text">Cabañas para 4 o 5 personas, con quincho, cocina equipada y estacionamiento.</p>
-                <div class="hero__actions">
-                    <a class="btn btn--sun" href="#cotizar"><?= icon('chat') ?> Cotizar mi estadía</a>
-                    <a class="btn btn--glass" href="#galeria">Ver fotos</a>
+    <!-- Portada -->
+        <section class="portada" aria-labelledby="hero-titulo">
+            <!-- Formas de fondo (decorativas) -->
+            <svg class="portada__fondo" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path class="portada__mancha portada__mancha--coral" d="M1180 0 H1440 V170 C1380 190 1330 140 1290 95 C1250 50 1200 40 1180 0 Z"/>
+                <path class="portada__mancha portada__mancha--coral" d="M1440 420 V600 H1110 C1150 560 1210 520 1290 515 C1360 510 1400 470 1440 420 Z"/>
+                <path class="portada__mancha portada__mancha--agua" d="M0 0 H860 C800 60 860 130 820 200 C780 270 700 260 690 340 C680 420 760 470 700 540 C670 575 610 600 560 600 H0 Z"/>
+                <path class="portada__mancha portada__mancha--mar" d="M0 0 H780 C720 70 770 140 720 210 C670 280 590 270 585 350 C580 430 640 480 560 560 C530 590 480 600 440 600 H0 Z"/>
+            </svg>
+
+            <!-- Dibujos de playa: estrellas de mar y una ola (decorativos) -->
+            <svg class="portada__dibujo portada__dibujo--estrella1" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                <path d="M38.8 36.6 C41.5 22.2 43.5 22.7 43.5 11.5 Q50.0 7.0 56.5 11.5 C56.5 22.7 58.5 22.2 61.2 36.6 C75.7 34.7 75.8 36.7 86.5 33.3 Q92.8 38.1 90.5 45.7 C79.9 49.2 81.0 50.9 68.1 57.9 C74.4 71.1 72.5 71.8 79.1 80.9 Q76.5 88.4 68.5 88.6 C61.9 79.5 60.6 81.1 50.0 71.0 C39.4 81.1 38.1 79.5 31.5 88.6 Q23.5 88.4 20.9 80.9 C27.5 71.8 25.6 71.1 31.9 57.9 C19.0 50.9 20.1 49.2 9.5 45.7 Q7.2 38.1 13.5 33.3 C24.2 36.7 24.3 34.7 38.8 36.6 Z"/>
+                <g class="portada__puntos">
+                    <circle cx="50.0" cy="40.0" r="2.2"/>
+                    <circle cx="50.0" cy="30.0" r="2.2"/>
+                    <circle cx="50.0" cy="21.0" r="2.2"/>
+                    <circle cx="61.4" cy="48.3" r="2.2"/>
+                    <circle cx="70.9" cy="45.2" r="2.2"/>
+                    <circle cx="79.5" cy="42.4" r="2.2"/>
+                    <circle cx="57.1" cy="61.7" r="2.2"/>
+                    <circle cx="62.9" cy="69.8" r="2.2"/>
+                    <circle cx="68.2" cy="77.1" r="2.2"/>
+                    <circle cx="42.9" cy="61.7" r="2.2"/>
+                    <circle cx="37.1" cy="69.8" r="2.2"/>
+                    <circle cx="31.8" cy="77.1" r="2.2"/>
+                    <circle cx="38.6" cy="48.3" r="2.2"/>
+                    <circle cx="29.1" cy="45.2" r="2.2"/>
+                    <circle cx="20.5" cy="42.4" r="2.2"/>
+                    <circle cx="50" cy="52" r="2.6"/>
+                </g>
+            </svg>
+            <svg class="portada__dibujo portada__dibujo--estrella2" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                <path d="M38.8 36.6 C41.5 22.2 43.5 22.7 43.5 11.5 Q50.0 7.0 56.5 11.5 C56.5 22.7 58.5 22.2 61.2 36.6 C75.7 34.7 75.8 36.7 86.5 33.3 Q92.8 38.1 90.5 45.7 C79.9 49.2 81.0 50.9 68.1 57.9 C74.4 71.1 72.5 71.8 79.1 80.9 Q76.5 88.4 68.5 88.6 C61.9 79.5 60.6 81.1 50.0 71.0 C39.4 81.1 38.1 79.5 31.5 88.6 Q23.5 88.4 20.9 80.9 C27.5 71.8 25.6 71.1 31.9 57.9 C19.0 50.9 20.1 49.2 9.5 45.7 Q7.2 38.1 13.5 33.3 C24.2 36.7 24.3 34.7 38.8 36.6 Z"/>
+                <g class="portada__puntos">
+                    <circle cx="50.0" cy="40.0" r="2.2"/>
+                    <circle cx="50.0" cy="30.0" r="2.2"/>
+                    <circle cx="50.0" cy="21.0" r="2.2"/>
+                    <circle cx="61.4" cy="48.3" r="2.2"/>
+                    <circle cx="70.9" cy="45.2" r="2.2"/>
+                    <circle cx="79.5" cy="42.4" r="2.2"/>
+                    <circle cx="57.1" cy="61.7" r="2.2"/>
+                    <circle cx="62.9" cy="69.8" r="2.2"/>
+                    <circle cx="68.2" cy="77.1" r="2.2"/>
+                    <circle cx="42.9" cy="61.7" r="2.2"/>
+                    <circle cx="37.1" cy="69.8" r="2.2"/>
+                    <circle cx="31.8" cy="77.1" r="2.2"/>
+                    <circle cx="38.6" cy="48.3" r="2.2"/>
+                    <circle cx="29.1" cy="45.2" r="2.2"/>
+                    <circle cx="20.5" cy="42.4" r="2.2"/>
+                    <circle cx="50" cy="52" r="2.6"/>
+                </g>
+            </svg>
+            <svg class="portada__dibujo portada__dibujo--ola" viewBox="0 0 140 50" aria-hidden="true" focusable="false">
+                <path d="M4 44 C20 44 24 12 50 10 C70 8 80 24 70 33 C62 40 50 33 55 25 C58 20 65 21 66 26 M70 33 C80 43 96 45 110 39 C120 35 126 31 136 31"/>
+            </svg>
+
+            <div class="container portada__grid">
+                <div class="portada__texto">
+                    <p class="portada__chip"><?= icon('walk') ?> <?= e($beachMinutes) ?> min caminando a la playa</p>
+                    <h1 id="hero-titulo" class="portada__titulo">Despierta a pasos del mar</h1>
+                    <p class="portada__datos">Caba&ntilde;as para 4 a 5 personas &middot; El Quisco &middot; Litoral Central</p>
+                    <p class="portada__mascotas">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <circle cx="5" cy="10" r="2.3"/><circle cx="9.5" cy="5.5" r="2.3"/><circle cx="14.5" cy="5.5" r="2.3"/><circle cx="19" cy="10" r="2.3"/>
+                            <path d="M12 11c-3 0-6.5 4.2-6.5 7 0 1.7 1.3 2.6 3 2.6 1.4 0 2.3-.8 3.5-.8s2.1.8 3.5.8c1.7 0 3-.9 3-2.6 0-2.8-3.5-7-6.5-7z"/>
+                        </svg>
+                        &iexcl;Somos pet-friendly!
+                    </p>
+                    <div class="portada__acciones">
+                        <a class="btn btn--sun" href="#cotizar"><?= icon('chat') ?> Cotizar mi estad&iacute;a</a>
+                        <a class="btn btn--glass" href="#galeria">Ver fotos</a>
+                    </div>
+                </div>
+
+                <!-- Fotos tipo postal. Cambia las rutas para usar otras fotos. -->
+                <div class="portada__fotos">
+                    <figure class="portada__foto portada__foto--a">
+                        <img src="img/cabana2/02_01.jpg" alt="Comedor y cocina de la caba&ntilde;a" fetchpriority="high" decoding="async">
+                    </figure>
+                    <figure class="portada__foto portada__foto--b">
+                        <img src="img/playa/03_vista_terreno.jpg" alt="Terreno, estacionamiento y vista al mar" fetchpriority="high" decoding="async">
+                    </figure>
+                    <figure class="portada__foto portada__foto--c">
+                        <img src="img/cabana1/01_03.jpeg" alt="Dormitorio principal" decoding="async">
+                    </figure>
+                    <figure class="portada__foto portada__foto--d">
+                        <img src="img/playa/04_cabanas.jpg" alt="Frente de las caba&ntilde;as" decoding="async">
+                    </figure>
                 </div>
             </div>
+
             <svg class="hero__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                 <path d="M0 50 C 180 90 360 10 540 40 S 900 90 1080 50 S 1320 10 1440 40 L1440 90 L0 90 Z"/>
             </svg>
         </section>
-
         <!-- Reservas -->
         <section class="section" aria-labelledby="reservas-titulo">
             <div class="container">

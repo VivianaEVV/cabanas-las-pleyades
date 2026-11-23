@@ -31,6 +31,7 @@ $ogImage   = rtrim($site['url'], '/') . '/' . $site['og_image'];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="<?= e(asset('assets/css/styles.css')) ?>">
+    <link rel="stylesheet" href="<?= e(asset('assets/css/hero.css')) ?>">
 
     <script type="application/ld+json"><?= structured_data($config) ?></script>
     <script src="<?= e(asset('assets/js/main.js')) ?>" defer></script>
