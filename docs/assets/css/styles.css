@@ -19,7 +19,7 @@
     --ink: #17303d;
     --ink-soft: #4a6170;
     --line: #d3e2e8;
-    --whatsapp: #25d366;
+    --whatsapp: #25d366;    /* verde oficial de WhatsApp */
     --whatsapp-hover: #1ebe5d;
 
     --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -36,7 +36,7 @@
     --space-5: 3rem;
 
     --container: 1200px;
-    --header-h: 96px;
+    --header-h: 112px;
 }
 
 /* ---------- Base ---------- */
@@ -180,7 +180,7 @@ address {
 .brand {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.9rem;
     color: inherit;
     text-decoration: none;
 }
@@ -273,10 +273,7 @@ address {
 }
 
 .booking-card {
-    min-height: 300px;
     border-radius: var(--radius-md);
-    overflow: hidden;
-    border: 1px solid var(--line);
 }
 
 /* Contenido de respaldo si el widget de Airbnb no carga */
@@ -1192,16 +1189,8 @@ address {
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
 /* ---------- Airbnb: mismo alto que el recuadro arena, sin barra ---------- */
+/* (main.js le quita la barra de desplazamiento al widget cuando carga) */
 .booking-grid {
     align-items: stretch;
 }
@@ -1220,18 +1209,13 @@ address {
     width: 100% !important;
     max-width: none !important;
     height: 100% !important;
-    min-height: 320px;
+    min-height: 340px;
     border: 0;
     display: block;
 }
-/* Iframe un poco mas ancho que su caja: la barra de desplazamiento queda fuera de la vista */
-.airbnb-embed-frame iframe {
-    display: block;
-    width: calc(100% + 18px) !important;
-    margin-right: -18px;
-    border: 0;
-}
-/* Logo oficial de WhatsApp sobre un circulo blanco para que se distinga en el boton verde */
+
+/* ---------- Logo oficial de WhatsApp en los botones ---------- */
+/* Sobre un circulo blanco para que se distinga en el boton verde */
 .btn__logo {
     width: 1.5em;
     height: 1.5em;
@@ -1239,4 +1223,87 @@ address {
     border-radius: 50%;
     background: #fff;
     flex-shrink: 0;
+}
+
+/* ---------- Linea de ahorro en la portada ---------- */
+.hero__deal {
+    margin: 0 0 var(--space-2);
+    font-weight: 600;
+    color: var(--sun);
+}
+
+/* ---------- Opiniones: compactas, estrellas al lado del nombre, texto completo ---------- */
+/* Un poco mas anchas que antes para que el texto ocupe menos lineas */
+.contact-grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+}
+
+.reviews .section__title {
+    margin-bottom: var(--space-2);
+}
+
+.reviews__score {
+    font-size: 2.2rem;
+}
+
+.reviews__summary {
+    margin-bottom: var(--space-2);
+}
+
+.reviews__list {
+    gap: 0.75rem;
+}
+
+.review {
+    padding: 0.75rem 0.9rem;
+}
+
+/* Sin circulo de inicial: el texto usa todo el ancho */
+.review__avatar {
+    display: none;
+}
+
+.review__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.review__author {
+    margin: 0;
+}
+
+.review__date {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+}
+
+.review__text {
+    flex-basis: 100%;
+    margin-top: 0.3rem;
+}
+
+.review__text p {
+    font-size: 0.88rem;
+}
+
+.reviews__actions {
+    padding-top: var(--space-2);
+}
+
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
